@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 
-const AccordeonItems = ({ items }) => {
+const AccordionItems = ({ items }) => {
+    //Initializing the state
     const [activeIndex, setActiveIndex] = useState(null);
 
+    //Function that sets the sate to the index of the title clicked
     const onTitleClick = index => {
         setActiveIndex(index);
         console.log('Title Clicked ', index);
     };
 
+    //Iterating through the items array to assign each one to an accordion item
     const renderedItems = items.map((item, index) => {
         const active = index === activeIndex ? 'active' : '';
         return (
@@ -29,4 +32,4 @@ const AccordeonItems = ({ items }) => {
     return <div>{renderedItems}</div>;
 };
 
-export default AccordeonItems;
+export default AccordionItems;
