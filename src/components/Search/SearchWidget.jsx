@@ -10,7 +10,7 @@ const SearchWidget = () => {
         /* - the useEffect hook cannot be marked as an asynchronous function. The workaround to use async functions is to either
         create a variable and set it to an async function, invoke the async function without assigning it to a variable, and calling 
         it right after invocation, or to use regular promise syntax. 
- */
+        */
         const apiCall = async () => {
             /*     - Storing the API call on a variable makes it easy to use later. In this case, it will be needed to fetch the search
             results and store them on the empty array set as the state of results 
@@ -48,7 +48,7 @@ const SearchWidget = () => {
         - The way this code is implemented now, will affect the initial search if there is a default search term assigned to the "term"
         state. To fix this, simply insert the code into the following condition: if (term && !results.length) {apiCall()} else 
         {timeOut function + cleanup function}. This will perform a search on 1st render and then apply the timeout on input change
- */
+        */
         const timeOutId = setTimeout(() => {
             if (term) {
                 apiCall();
@@ -58,7 +58,7 @@ const SearchWidget = () => {
         /*   - This is a feature of the useEffect function which is called a cleanup function. This code will be executed on from the first
         rerender on, and what it does is basically to reset the useEffect hook. The ony code that can be returned from the useEffect
         function is another function
- */
+        */
         return () => {
             clearTimeout(timeOutId);
         };
@@ -120,7 +120,7 @@ const SearchWidget = () => {
         - This is a complex solution which is hard to understand when reading the code and thus, the best way to avoid it is by
         not hardcoding a default state for "term". That way, the missing dependency warning will not occur and no warnings or errors
         will be logged.   
-    */
+        */
     return (
         <div>
             <div className="ui form">
