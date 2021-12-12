@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const DropdownOptions = ({ options, selection, setSelection }) => {
+const DropdownOptions = ({ label, options, selection, setSelection }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
     const ref = useRef();
 
@@ -39,11 +39,7 @@ const DropdownOptions = ({ options, selection, setSelection }) => {
             return null; //In React, null means 'do not render anything'
         }
         return (
-            <div
-                key={option.value}
-                className="item"
-                onClick={() => setSelection(option)}
-            >
+            <div key={option.value} className="item" onClick={() => setSelection(option)}>
                 {option.label}
             </div>
         );
@@ -52,20 +48,14 @@ const DropdownOptions = ({ options, selection, setSelection }) => {
     return (
         <div ref={ref} className="ui form">
             <div className="field">
-                <label className="label">Select a Color</label>
+                <label className="label">{label}</label>
                 <div
                     onClick={() => setOpenDropdown(!openDropdown)}
-                    className={`ui selection dropdown ${
-                        openDropdown ? 'visible active' : ''
-                    }`}
+                    className={`ui selection dropdown ${openDropdown ? 'visible active' : ''}`}
                 >
                     <i className="dropdown icon"></i>
                     <div className="text">{selection.label}</div>
-                    <div
-                        className={`menu ${
-                            openDropdown ? 'visible transition' : ''
-                        }`}
-                    >
+                    <div className={`menu ${openDropdown ? 'visible transition' : ''}`}>
                         {renderedOptions}
                     </div>
                 </div>

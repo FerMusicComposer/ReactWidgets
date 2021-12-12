@@ -24,14 +24,14 @@ const DropdownWidget = () => {
         <div>
             {showDropdown ? (
                 <DropdownOptions
+                    label="Select a color from the list"
                     selection={selection}
                     setSelection={setSelection}
                     options={options}
                 />
             ) : null}
-            <button onClick={() => setShowDropdown(!showDropdown)}>
-                Toggle Dropdown
-            </button>
+            <br />
+            <button onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button>
         </div>
     );
 };
